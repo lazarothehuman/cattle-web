@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Sample</ui:define>
+	<ui:define name="viewname">
+		<li>Components</li>
+		<li>/</li>
+		<li><p:link outcome="/sample">Sample Page</p:link></li>
+	</ui:define>
+
+	<ui:define name="head">
+		<style type="text/css">
+.ui-panelgrid.form-elements .ui-grc-2 {
+	padding-left: 60px;
+}
+
+@media ( max-width :1024px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 20px;
+	}
+}
+
+@media ( max-width :640px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 6px;
+	}
+}
+
+.dialogDemo label {
+	line-height: 2.1em;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="ui-fluid">
+				<div class="ui-g">
+					<div class="ui-g-12">
+						<div class="card card-w-title" style="">
+							<h1>Adicionar um novo usuário</h1>
+							<p:panelGrid columns="2"
+								columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2 ui-grc-2,ui-g-12 ui-md-4"
+								layout="grid"
+								styleClass="ui-panelgrid-blank form-group form-elements"
+								style="border:0px none; background-color:transparent;">
+								<h:outputLabel value="Nome :" />
+								<p:inputText id="nomeUser" />
+								<h:outputLabel for="loginUser" value="Login :" />
+								<p:inputText id="loginUser" />
+								<h:outputLabel for="passwordUser" value="Password :" />
+								<p:inputText id="passwordUser" />
+								<h:outputLabel for="repeatPassword" value="Repeat Password :" />
+								<p:inputText id="repeatPassword" value="#{loginView.user}" />
+								<p:outputLabel for="comboProfile" value="Perfil :" />
+								<p:selectOneMenu id="comboProfile">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+									<f:selectItem itemLabel="PS4" itemValue="PS4" />
+									<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+								</p:selectOneMenu>
+								<p:outputLabel></p:outputLabel>
+								<p:commandButton type="button" value="Adicionar usuario"
+									styleClass="rounded-btn" />
+							</p:panelGrid>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

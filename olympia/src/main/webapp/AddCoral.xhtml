@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Adicionar Coral</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="card card-w-title">
+				<h1>Informação sobre coral</h1>
+				<p:tooltip />
+				<p:messages id="messages" showDetail="true" closable="true" />
+				<p:panelGrid columns="2" layout="tabular"
+					styleClass="ui-panelgrid-blank form-group">
+					<p:outputLabel for="localizacaoTxt" value="Localização: " />
+					<p:inputText id="localizacaoTxt" placeholder="Localização"
+						label="Distrito ou cidade do coral"
+						value="#{addCoralView.localizacaoTxt}" />
+					<p:outputLabel for="codigoTxt" value="Codigo: " />
+					<p:inputText id="codigoTxt" placeholder="Codigo do coral"
+						label="Codigo do coral" value="#{addCoralView.codigoTxt}" />
+					<p:outputLabel></p:outputLabel>
+					<p:commandButton ajax="false" type="submit" value="Salvar"
+						action="#{addCoralView.addCoral}" process="@this" />
+				</p:panelGrid>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Visualizar Corais</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+
+	</ui:define>
+
+
+	<ui:define name="content">
+
+		<div class="card">
+			<p:menubar>
+				<p:submenu label="Adicionar" icon="fa fa-plus">
+					<p:menuitem value="Coral" url="#" />
+					<p:menuitem value="Animal no coral" url="#" />
+				</p:submenu>
+				<p:submenu label="Modificar" icon="ui-icon-pencil fa fa-pencil">
+					<p:menuitem value="Coral" url="#" icon="fa fa-undo" />
+				</p:submenu>
+			</p:menubar>
+		</div>
+
+		<div class="card card-w-title">
+			<h1>Informacao dos Corais Kussulo</h1>
+			<p:dataTable var="coral" value="#{coraisView.corais}"
+				selectionMode="single" reflow="true"
+				selection="#{coraisView.selectedCoral}" rowKey="#{coral.code}"
+				paginator="true" rows="10">
+				<f:facet name="header">
+                                Lista dos corais
+                            </f:facet>
+				<p:column headerText="Codigo" sortBy="#{coral.code}">
+					<h:outputText value="#{coral.code}" />
+				</p:column>
+
+				<p:column headerText="Localizacao">
+					<h:outputText value="#{coral.localizacao}" />
+				</p:column>
+
+				<p:column headerText="Quantidade de animais">
+				<h:outputText value="#{coral.animais.size()}" />
+
+				</p:column>
+			</p:dataTable>
+			
+
+		</div>
+
+
+
+	</ui:define>
+
+</ui:composition>

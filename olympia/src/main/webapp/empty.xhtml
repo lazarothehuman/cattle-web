@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Empty Page</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+
+
+		<div class="card card-w-title">
+			<h1>Dados pessoais</h1>
+			<p:panelGrid columns="2" layout="tabular"
+				styleClass="ui-panelgrid-blank form-group">
+				<p:outputLabel for="nomeTxt" value="Nome:" />
+				<p:inputText id="nomeTxt" placeholder="Insira aqui o nome"
+					label="Surname" value="#{emptyView.nome}" />
+				<p:outputLabel for="emailTxt" value="Email: " />
+				<p:inputText id="emailTxt" placeholder="Email" />
+				<p:outputLabel for="phoneTxt" value="Telefone:  " />
+				<p:inputText id="phoneTxt" placeholder="Nº telefone" />
+
+				<p:inputText placeholder="Disabled" disabled="true" />
+				<p:inputText placeholder="Readonly" readonly="true" />
+				<p:inputText placeholder="Invalid" styleClass="ui-state-error" />
+				<p:commandButton value="Save" actionListener="#{emptyView.test}"
+					immediate="true" />
+			</p:panelGrid>
+		</div>
+
+	</ui:define>
+
+</ui:composition>

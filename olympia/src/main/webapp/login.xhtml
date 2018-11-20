@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Kussulo Cattle Management - Login</title>
+</h:head>
+
+<h:body styleClass="login-body">
+	<div class="login-topbar">
+		<p:graphicImage name="images/logo-olympia-white.png"
+			library="olympia-layout" />
+		<span class="app-title">CATTLE MANAGEMENT</span>
+	</div>
+
+	<div class="login-panel">
+		<h1>SIGN IN EM KASULO'S CATTLE MANAGEMENT</h1>
+
+		<p>Bem vindo, insira os seus credenciais para entrar</p>
+		<h:form>
+			<h:outputLabel for="username" value="Username" />
+			<p:inputText id="username" value="#{loginView.user}" />
+
+			<h:outputLabel for="password" value="Password" />
+			<p:password id="password" value="#{loginView.passe}" />
+
+			<div class="remember-me">
+				<p:inputSwitch />
+				<span>Remember Me</span>
+			</div>
+
+			<p:commandButton ajax="false" type="submit" value="Save" action="#{loginView.aceder}" process="@this" />
+		</h:form>
+	</div>
+
+	<h:outputStylesheet name="css/layout-#{guestPreferences.theme}.css"
+		library="olympia-layout" />
+</h:body>
+
+</html>

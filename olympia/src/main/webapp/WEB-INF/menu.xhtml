@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:po="http://primefaces.org/olympia">
+
+	<div class="layout-menu-container">
+		<div class="nano">
+			<div class="nano-content menu-scroll-content">
+				<h:form id="menuform">
+					<po:menu>
+						<p:submenu id="coralMenu" label="CORAL">
+							<p:menuitem id="addCoral" value="Adicionar" icon="fa fa-plus"
+								actionListener="#{guestPreferences.addCoral}" ajax="false" />
+							<p:menuitem id="viewCoral" value="Visualizar"
+								icon="fa fa-fw fa-bars"
+								actionListener="#{guestPreferences.viewCoral}" ajax="false" />
+						</p:submenu>
+						<p:submenu id="animalMenu" label="ANIMAL">
+							<p:menuitem id="addAnimal" value="Adicionar" icon="fa fa-plus"
+								actionListener="#{guestPreferences.addAnimal}" ajax="false" />
+							<p:menuitem id="updateAnimal" value="Actualizar" icon="fa fa-fw fa-edit"
+								actionListener="#{guestPreferences.addAnimal}" ajax="false" />
+							<p:menuitem id="viewAnimal" value="Visualizar"
+								icon="fa fa-fw fa-bars"
+								actionListener="#{guestPreferences.viewAnimal}" ajax="false" />
+							<p:menuitem id="saidaAnimal" value="Saida"
+								icon="fa fa-fw fa-times"
+								actionListener="#{guestPreferences.setMenuColor('layout-menu-dark')}"
+								ajax="false" />
+							<p:menuitem id="procedimentoAnimal"
+								value="Registar procedimento em animal"
+								icon="fa fa-fw fa-square-o"
+								actionListener="#{guestPreferences.setMenuColor('layout-menu-dark')}"
+								ajax="false" />
+						</p:submenu>
+						<p:submenu id="procedimentoMenu" label="PROCEDIMENTO">
+							<p:menuitem id="addProcedimento" value="Adicionar"
+								icon="fa fa-plus"
+								actionListener="#{guestPreferences.setMenuColor('layout-menu-light')}"
+								ajax="false" />
+							<p:menuitem id="visualizarProcedimento" value="Visualizar"
+								icon="fa fa-fw fa-bars"
+								actionListener="#{guestPreferences.setMenuColor('layout-menu-dark')}"
+								ajax="false" />
+						</p:submenu>
+
+
+						<p:submenu id="om_default" label="PAGES" icon="fa fa-fw fa-cube">
+							<p:menuitem id="om_empty" value="Empty"
+								icon="fa fa-fw fa-square-o" outcome="/empty" />
+							<p:menuitem id="om_login" value="Login"
+								icon="fa fa-fw fa-sign-in" outcome="/login" />
+							<p:menuitem id="om_db_landing" value="Landing"
+								icon="fa fa-fw fa-certificate" outcome="/landing" />
+							<p:menuitem id="om_error" value="Error"
+								icon="fa fa-fw fa-exclamation-circle" outcome="/error" />
+							<p:menuitem id="om_404" value="404" icon="fa fa-fw fa-times"
+								outcome="/404" />
+							<p:menuitem id="om_access" value="Access Denied"
+								icon="fa fa-fw fa-exclamation-triangle" outcome="/access" />
+						</p:submenu>
+
+					</po:menu>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</ui:composition>
