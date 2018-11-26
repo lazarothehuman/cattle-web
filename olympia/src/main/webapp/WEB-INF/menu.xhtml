@@ -38,7 +38,7 @@
 						<p:submenu id="procedimentoMenu" label="PROCEDIMENTO">
 							<p:menuitem id="addProcedimento" value="Adicionar"
 								icon="fa fa-plus"
-								actionListener="#{guestPreferences.setMenuColor('layout-menu-light')}"
+								actionListener="#{guestPreferences.addProcedimento}"
 								ajax="false" />
 							<p:menuitem id="visualizarProcedimento" value="Visualizar"
 								icon="fa fa-fw fa-bars"
@@ -47,20 +47,7 @@
 						</p:submenu>
 
 
-						<p:submenu id="om_default" label="PAGES" icon="fa fa-fw fa-cube">
-							<p:menuitem id="om_empty" value="Empty"
-								icon="fa fa-fw fa-square-o" outcome="/empty" />
-							<p:menuitem id="om_login" value="Login"
-								icon="fa fa-fw fa-sign-in" outcome="/login" />
-							<p:menuitem id="om_db_landing" value="Landing"
-								icon="fa fa-fw fa-certificate" outcome="/landing" />
-							<p:menuitem id="om_error" value="Error"
-								icon="fa fa-fw fa-exclamation-circle" outcome="/error" />
-							<p:menuitem id="om_404" value="404" icon="fa fa-fw fa-times"
-								outcome="/404" />
-							<p:menuitem id="om_access" value="Access Denied"
-								icon="fa fa-fw fa-exclamation-triangle" outcome="/access" />
-						</p:submenu>
+						
 
 					</po:menu>
 				</h:form>

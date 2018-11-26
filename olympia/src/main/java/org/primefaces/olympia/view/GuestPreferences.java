@@ -2,10 +2,13 @@ package org.primefaces.olympia.view;
 
 import java.io.IOException;
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import mz.co.basse.cattlecore.models.User;
 
 @ManagedBean
 @SessionScoped
@@ -20,6 +23,16 @@ public class GuestPreferences implements Serializable {
 	private String topBarColor = "layout-topbar-light";
 
 	private String logo = "logo-olympia";
+	
+	private User currentUser;
+
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
 
 	public String getTheme() {
 		return theme;
@@ -95,6 +108,14 @@ public class GuestPreferences implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public void addProcedimento() {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath() + "/add-procedimento.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

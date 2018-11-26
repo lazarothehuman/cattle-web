@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Adicionar Procedimento</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="card card-w-title">
+				<h1>Informação sobre procedimento</h1>
+				<p:tooltip />
+				<p:messages id="messages" showDetail="true" closable="true" />
+				<p:panelGrid columns="2" layout="tabular"
+					styleClass="ui-panelgrid-blank form-group">
+					<p:outputLabel for="nomeTxt" value="Nome: " />
+					<p:inputText id="nomeTxt" placeholder="Nome do procedimento"
+						label="Nome do procedimento que deseja adicionar"
+						value="#{addProcedimentoView.nome}" />
+					<p:outputLabel for="descricaoTxt" value="Descricao: " />
+					<p:inputText id="descricaoTxt" placeholder="Descricao do medicamento "
+						label="Descricao breve do medicamento que deseja adicionar" value="#{addProcedimentoView.descricao}" />
+					<p:outputLabel></p:outputLabel>
+					<p:commandButton ajax="false" type="submit" value="Salvar"
+						action="#{addProcedimentoView.addProcedimento}" process="@this" />
+				</p:panelGrid>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
