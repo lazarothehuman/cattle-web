@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Visualizar Corais</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+
+	</ui:define>
+
+
+	<ui:define name="content">
+
+		<div class="card">
+			<p:menubar>
+				<p:submenu label="Adicionar" icon="fa fa-plus">
+					<p:menuitem value="Coral" url="#" />
+					<p:menuitem value="Animal no coral" url="#" />
+				</p:submenu>
+				<p:submenu label="Modificar" icon="ui-icon-pencil fa fa-pencil">
+					<p:menuitem value="Coral" url="#" icon="fa fa-undo" />
+				</p:submenu>
+			</p:menubar>
+		</div>
+
+		<div class="card card-w-title">
+			<h1>Informacao dos Corais Kussulo</h1>
+			<p:dataTable var="procedimento" value="#{coraisView.procedimentos}"
+				selectionMode="single" reflow="true"
+				selection="#{procedimentosView.selectedProcedimento}" rowKey="#{procedimento.nome}"
+				paginator="true" rows="10">
+				<f:facet name="header">
+                                Lista dos procedimentos
+                            </f:facet>
+				<p:column headerText="Nome" sortBy="#{procedimento.nome}">
+					<h:outputText value="#{procedimento.nome}" />
+				</p:column>
+
+				<p:column headerText="Descricao">
+					<h:outputText value="#{procedimento.descricao}" />
+				</p:column>
+
+				<p:column headerText="Quantidade de animais">
+				<h:outputText value="#{procedimento.animalProcedimento.size()}" />
+
+				</p:column>
+			</p:dataTable>
+			
+
+		</div>
+
+
+
+	</ui:define>
+
+</ui:composition>
