@@ -47,14 +47,15 @@
 						<f:selectItem itemLabel="Masculino" itemValue="Macho" />
 						<f:selectItem itemLabel="Feminino" itemValue="Femea" />
 					</p:selectOneRadio>
-					<p:outputLabel for="alturaTxt" value="Altura" />
-					<p:inputText id="alturaTxt" placeholder="Altura do animal: "
-						label="Altura do animal a ser adicionado"
-						value="#{addAnimalView.alturaTxt}" />
-					<p:outputLabel for="pesoTxt" value="Peso" />
-					<p:inputText id="pesoTxt" placeholder="Peso do animal: "
-						label="Peso do animal a ser adicionado"
-						value="#{addAnimalView.pesoTxt}" />
+					<p:outputLabel for="cor" value="Cor" />
+					<p:inputText id="cor" placeholder="Cor do animal: "
+						label="Cor do animal a ser adicionado"
+						value="#{addAnimalView.cor}" />
+					<p:outputLabel value="Classificacao" />
+					<p:selectOneRadio layout="responsive" columns="5">
+						<f:selectItem itemLabel="Masculino" itemValue="Macho" />
+						<f:selectItem itemLabel="Feminino" itemValue="Femea" />
+					</p:selectOneRadio>
 					<p:outputLabel for="dataNascimentoBtn" value="Data nascimento: " />
 					<p:calendar id="dataNascimentoBtn" showOn="button" />
 					<p:outputLabel for="codeTxt" value="Numero" />

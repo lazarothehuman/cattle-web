@@ -1,10 +1,15 @@
 package mz.co.basse.utils;
 
-import javax.faces.component.UIViewRoot;
+import java.io.IOException;
+
+import javax.faces.application.NavigationHandler;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+
+import mz.co.basse.cattlecore.models.User;
 
 public class Autorizador implements PhaseListener {
 
@@ -21,6 +26,14 @@ public class Autorizador implements PhaseListener {
 		String nomePagina = facesContext.getViewRoot().getViewId();
 		if("/login.xhtml".equals(nomePagina))
 			return;
+		User user = (User) facesContext.getExternalContext().getSessionMap().get("userLogado");
+		if (user != null) {
+			return;
+		}
+		
+		NavigationHandler handler = facesContext.getApplication().getNavigationHandler();
+		handler.handleNavigation(facesContext, null, "/login?faces-redirect=true");
+		facesContext.renderResponse();
 		
 	}
 

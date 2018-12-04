@@ -43,7 +43,10 @@ public class LoginView {
 		User selectedUser = accessControlManager.findUser(user);
 		if(selectedUser!=null) {
 			System.out.println("Name: "+selectedUser.getName());
-			if(selectedUser.getPassword().equals(passe))
+			if(selectedUser.getPassword().equals(passe)) {
+				FacesContext currentInstance = FacesContext.getCurrentInstance();
+				currentInstance.getExternalContext().getSessionMap().put("userLogado", selectedUser);
+			}
 				System.out.println();
 		}else {
 			System.out.println("Not null");

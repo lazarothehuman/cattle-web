@@ -3,10 +3,13 @@ package org.primefaces.olympia.view;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import mz.co.basse.cattlecore.models.User;
 
@@ -28,6 +31,11 @@ public class GuestPreferences implements Serializable {
 
 	public User getCurrentUser() {
 		return currentUser;
+	}
+	
+	@PostConstruct
+	public void init() {
+		currentUser= (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLogado");
 	}
 
 	public void setCurrentUser(User currentUser) {
@@ -117,5 +125,26 @@ public class GuestPreferences implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void viewProcedimento() {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath() + "/view-procedimentos.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void logout(ActionEvent event) {
+		System.out.println("Loggin out");
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().getSessionMap().remove("userLogado");
+		NavigationHandler handler = facesContext.getApplication().getNavigationHandler();
+		handler.handleNavigation(facesContext, null, "/login?faces-redirect=true");
+		facesContext.renderResponse();
+		
+		
 	}
 }
