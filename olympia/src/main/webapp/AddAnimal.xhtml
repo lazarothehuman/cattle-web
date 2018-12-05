@@ -10,11 +10,7 @@
 		<li>/</li>
 		<li><p:link outcome="/empty">Empty</p:link></li>
 	</ui:define>
-
-
-
 	<ui:define name="content">
-
 		<h:form>
 			<div class="card card-w-title">
 
@@ -23,52 +19,70 @@
 				<p:messages id="messages" showDetail="true" closable="true" />
 				<p:panelGrid columns="2" layout="tabular"
 					styleClass="ui-panelgrid-blank form-group">
-					<p:outputLabel for="coraisSelectOneMenu"
-						value="Selecione o coral: " />
-					<p:selectOneMenu id="coraisSelectOneMenu"
-						value="#{addAnimalView.selectedCoral}" style="margin-bottom:10px;">
-						<f:selectItems value="#{addAnimalView.corais}" var="coral"
-							itemLabel="#{coral.code}" />
-					</p:selectOneMenu>
-					<p:outputLabel for="tipoSelectOneMenu" value="Selecione o tipo: " />
-					<p:selectOneMenu id="tipoSelectOneMenu" style="margin-bottom:10px;">
-						<f:selectItems />
-					</p:selectOneMenu>
-					<p:outputLabel for="codigoPaiTxt" value="Codigo do pai" />
-					<p:inputText id="codigoPaiTxt" placeholder="Codigo do pai "
-						label="Altura do animal a ser adicionado"
-						 />
-					<p:outputLabel for="codigoMaeTxt" value="Codigo da mae" />
-					<p:inputText id="codigoMaeTxt" placeholder="Codigo da mae do animal "
-						label="Codigo da mae do animal a ser adicionado"
-						 />
-					<p:outputLabel value="Sexo" />
-					<p:selectOneRadio layout="responsive" columns="5">
-						<f:selectItem itemLabel="Masculino" itemValue="Macho" />
-						<f:selectItem itemLabel="Feminino" itemValue="Femea" />
-					</p:selectOneRadio>
-					<p:outputLabel for="cor" value="Cor" />
-					<p:inputText id="cor" placeholder="Cor do animal: "
-						label="Cor do animal a ser adicionado"
-						value="#{addAnimalView.cor}" />
-					<p:outputLabel value="Classificacao" />
-					<p:selectOneRadio layout="responsive" columns="5">
-						<f:selectItem itemLabel="Masculino" itemValue="Macho" />
-						<f:selectItem itemLabel="Feminino" itemValue="Femea" />
-					</p:selectOneRadio>
-					<p:outputLabel for="dataNascimentoBtn" value="Data nascimento: " />
-					<p:calendar id="dataNascimentoBtn" showOn="button" />
 					<p:outputLabel for="codeTxt" value="Numero" />
 					<p:inputText id="codeTxt" placeholder="Numero"
 						label="Numero que foi estampado no animal"
 						value="#{addAnimalView.codeTxt}" />
 
+					<p:outputLabel for="coraCode"
+						value="Selecione o codigo do coral: " />
+					<p:inputText id="coraCode" placeholder="Numero"
+						label="Numero que foi estampado no animal"
+						value="#{addAnimalView.coralCode}" />
+					
+
+					<p:outputLabel for="tipoSelectOneMenu" value="Selecione o tipo: " />
+					<p:selectOneMenu id="tipoSelectOneMenu"
+						value="#{addAnimalView.selectedTipo}" style="margin-bottom:10px;">
+						<f:selectItems value="#{addAnimalView.tipos}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="acPai" value="Codigo do pai" />
+					<p:autoComplete id="acPai" value="#{addAnimalView.codePai}"
+						completeMethod="#{addAnimalView.searchPai}"
+						style="margin-bottom:10px;" />
+
+					<p:outputLabel for="acMae" value="Codigo da mae" />
+					<p:autoComplete id="acMae" value="#{addAnimalView.codeMae}"
+						completeMethod="#{addAnimalView.searchMae}"
+						style="margin-bottom:10px;" />
+
+					<p:outputLabel value="Sexo" />
+					<p:selectOneMenu id="sexoMenu"
+						value="#{addAnimalView.selectedSexo}" style="margin-bottom:10px;">
+						<f:selectItems value="#{addAnimalView.sexos}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="cor" value="Cor" />
+					<p:inputText id="cor" placeholder="Cor do animal: "
+						label="Cor do animal a ser adicionado"
+						value="#{addAnimalView.cor}" />
+
+					<p:outputLabel value="Classificacao" />
+					<p:selectOneMenu id="classificacaoMenu"
+						value="#{addAnimalView.selectedClassificacao}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{addAnimalView.classificacoes}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Raça" />
+					<p:selectOneMenu id="racaMenu"
+						value="#{addAnimalView.selectedRaca}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{addAnimalView.racas}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="dataNascimentoBtn" value="Data nascimento: " />
+					<p:calendar id="dataNascimentoBtn" showOn="button"
+						value="#{addAnimalView.dataNascimento}" />
+
 					<p:outputLabel></p:outputLabel>
 					<p:commandButton ajax="false" type="submit" value="Salvar"
 						action="#{addAnimalView.addAnimal}" process="@this" />
+
 				</p:panelGrid>
 			</div>
 		</h:form>
-	</ui:define>
 
+	</ui:define>
 </ui:composition>
