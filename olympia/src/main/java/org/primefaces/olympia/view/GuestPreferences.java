@@ -147,6 +147,15 @@ public class GuestPreferences implements Serializable {
 		
 	}
 	
+	public void modifyAnimal() {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath() + "/modify-animal.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void logout(ActionEvent event) {
 		System.out.println("Loggin out");
 		FacesContext facesContext = FacesContext.getCurrentInstance();

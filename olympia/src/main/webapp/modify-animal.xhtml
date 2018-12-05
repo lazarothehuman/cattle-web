@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Adicionar Animal</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<div class="card card-w-title">
+
+				<h1>Modificar um animal</h1>
+				<p:tooltip />
+				<p:messages id="messages" showDetail="true" closable="true" />
+
+				<p:outputLabel for="codeTxt" value="Numero" />
+				<p:inputText id="searchCode" placeholder="Numero"
+					label="Numero que foi estampado no animal"
+					value="#{modifyAnimalView.searchCode}" />
+				<p:commandButton ajax="false" type="submit" value="Search"
+					action="#{modifyAnimalView.search}" process="@this" />
+
+				<p:panelGrid columns="2" layout="tabular"
+					styleClass="ui-panelgrid-blank form-group">
+					<p:outputLabel for="codeTxt" value="Numero" />
+					<p:inputText id="codeTxt" placeholder="Numero"
+						label="Numero que foi estampado no animal"
+						value="#{modifyAnimalView.codeTxt}" />
+
+					<p:outputLabel for="coraCode" value="Selecione o codigo do coral: " />
+					<p:inputText id="coraCode" placeholder="Numero"
+						label="Numero que foi estampado no animal"
+						value="#{modifyAnimalView.coralCode}" />
+
+
+					<p:outputLabel for="tipoSelectOneMenu" value="Selecione o tipo: " />
+					<p:selectOneMenu id="tipoSelectOneMenu"
+						value="#{modifyAnimalView.selectedTipo}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{modifyAnimalView.tipos}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="acPai" value="Codigo do pai" />
+					<p:autoComplete id="acPai" value="#{modifyAnimalView.codePai}"
+						completeMethod="#{modifyAnimalView.searchPai}"
+						style="margin-bottom:10px;" />
+
+					<p:outputLabel for="acMae" value="Codigo da mae" />
+					<p:autoComplete id="acMae" value="#{modifyAnimalView.codeMae}"
+						completeMethod="#{modifyAnimalView.searchMae}"
+						style="margin-bottom:10px;" />
+
+					<p:outputLabel value="Sexo" />
+					<p:selectOneMenu id="sexoMenu"
+						value="#{modifyAnimalView.selectedSexo}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{modifyAnimalView.sexos}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="cor" value="Cor" />
+					<p:inputText id="cor" placeholder="Cor do animal: "
+						label="Cor do animal a ser adicionado"
+						value="#{modifyAnimalView.cor}" />
+
+					<p:outputLabel value="Classificacao" />
+					<p:selectOneMenu id="classificacaoMenu"
+						value="#{modifyAnimalView.selectedClassificacao}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{modifyAnimalView.classificacoes}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Raça" />
+					<p:selectOneMenu id="racaMenu"
+						value="#{modifyAnimalView.selectedRaca}"
+						style="margin-bottom:10px;">
+						<f:selectItems value="#{modifyAnimalView.racas}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="dataNascimentoBtn" value="Data nascimento: " />
+					<p:calendar id="dataNascimentoBtn" showOn="button"
+						value="#{modifyAnimalView.dataNascimento}" />
+
+					<p:outputLabel></p:outputLabel>
+					<p:commandButton ajax="false" type="submit" value="Salvar"
+						action="#{modifyAnimalView.modifyAnimal}" process="@this" />
+
+				</p:panelGrid>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
