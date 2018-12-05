@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">Visualizar Corais</ui:define>
+	<ui:define name="viewname">
+		<li>Pages</li>
+		<li>/</li>
+		<li><p:link outcome="/empty">Empty</p:link></li>
+
+	</ui:define>
+
+
+	<ui:define name="content">
+		<div class="card card-w-title">
+			<h1>Pesquisa avançada</h1>
+			<h:form>
+				<p:inputText id="codeTxt" placeholder="Codigo do animal"
+					value="#{animaisView.selectedCode}" />
+				<p:inputText id="coralTxt" placeholder="Coral do animal"
+					value="#{animaisView.selectedCoral}" />
+				<p:selectOneMenu id="racaMenu" 
+					value="#{animaisView.selectedRaca}" style="margin-bottom:10px;">
+					<f:selectItems value="#{animaisView.racas}" />
+				</p:selectOneMenu>
+				<p:selectOneMenu id="tipoMenu" 
+					value="#{animaisView.selectedTipo}" style="margin-bottom:10px;">
+					<f:selectItems value="#{animaisView.tipos}" />
+				</p:selectOneMenu>
+				<p:selectOneMenu id="classiMenu" 
+					value="#{animaisView.selectedClassificacao}"
+					style="margin-bottom:10px;">
+					<f:selectItems value="#{animaisView.classificacoes}" />
+				</p:selectOneMenu>
+
+				<p:commandButton ajax="false" type="submit" value="Search"
+					action="#{animaisView.search}" process="@this" />
+			</h:form>
+		</div>
+
+		<div class="card card-w-title">
+			<h1>Informacao dos Animais Kussulo</h1>
+
+			<p:dataTable var="animal" value="#{animaisView.animais}"
+				selectionMode="single" reflow="true"
+				selection="#{animaisView.selectedAnimal}" rowKey="#{animal.id}"
+				paginator="true" rows="10">
+				<f:facet name="header">
+                                Lista dos corais
+                </f:facet>
+				<p:column headerText="Codigo" sortBy="#{animal.code}">
+					<h:outputText value="#{animal.code}" />
+				</p:column>
+
+				<p:column headerText="Classificacao">
+					<h:outputText value="#{animal.classificacao}" />
+				</p:column>
+
+				<p:column headerText="Raca">
+					<h:outputText value="#{animal.raca}" />
+				</p:column>
+
+				<p:column headerText="Coral">
+					<h:outputText value="#{animal.coral.code}" />
+				</p:column>
+
+				<p:column headerText="Cor">
+					<h:outputText value="#{animal.cor}" />
+				</p:column>
+
+				<p:column headerText="Tipo">
+					<h:outputText value="#{animal.tipo}" />
+				</p:column>
+
+
+			</p:dataTable>
+
+
+		</div>
+
+
+
+	</ui:define>
+
+</ui:composition>
