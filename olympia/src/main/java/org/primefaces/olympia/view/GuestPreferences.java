@@ -10,8 +10,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
 import mz.co.basse.cattlecore.models.User;
+import mz.co.basse.manager.TransactionManager;
+import mz.co.basse.manager.TransactionManagerImp;
 
 @ManagedBean
 @SessionScoped
@@ -28,6 +29,8 @@ public class GuestPreferences implements Serializable {
 	private String logo = "logo-olympia";
 	
 	private User currentUser;
+	
+	TransactionManager transactionManager = new TransactionManagerImp();
 
 	public User getCurrentUser() {
 		return currentUser;
@@ -138,12 +141,6 @@ public class GuestPreferences implements Serializable {
 	}
 	
 	public void viewAnimais() {
-		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		try {
-			ec.redirect(ec.getRequestContextPath() + "/view-animais.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 	}
 	
